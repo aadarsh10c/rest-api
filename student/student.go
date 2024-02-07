@@ -23,6 +23,7 @@ func GetStudentDetail(id string) (StudentResponse, error) {
 		log.Fatal(err)
 		return StudentResponse{}, err
 	}
+	defer res.Body.Close()
 	//extract the response body from the response
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
